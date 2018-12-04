@@ -42,6 +42,7 @@ D:\>"d:\Program Files\Python35\python.exe" c:\hello.txt  #通过前面程序的�
 变量的命名规则：
 变量名首字母：  字母  _
 变量名后面的：  字符   字母  _   数字
+变量名区分大小写
 不可以 ：空格 特殊字符不可以用作变量名 
 复杂的变量名字：
 Students_number   #学生数量 多个单词下划线 
