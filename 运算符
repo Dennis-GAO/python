@@ -1,0 +1,105 @@
+
+一 算数运算符
+
+二 比较运算符
+
+三 逻辑运算符
+
+四 赋值运算符
+
+五 身份运算符
+
+python常用运算符
+
+一 算数运算符
+
++ - * /  //(取整除)  %(取余除)  ** 指数计算   */优先级高于 +- 可以通过（）区分优先级  括号可以嵌套
+>>> 5/2
+2.5
+>>> 5//2  #地板除 
+2
+>>> 9//2
+4
+>>> 5%2 #取商
+1
+>>> 9%5
+4
+>>>
+
+二 比较运算符：>、 <、 >=、 <=、 ==、!= True False
+
+>>> a = 5
+>>> b = 3
+>>> a > b  # 检查左操作数的值是否大于右操作数的值，如果是，则条件成立。 
+True
+>>> a < b  # 检查左操作数的值是否小于右操作数的值，如果是，则条件成立。
+False
+>>> a <= b  # 检查左操作数的值是否小于或等于右操作数的值，如果是，则条件成立。
+False
+>>> a >= b  # 检查左操作数的值是否大于或等于右操作数的值，如果是，则条件成立。
+True
+>>> a == b  # 检查，两个操作数的值是否相等，如果是则条件变为真。
+False
+>>> a != b  # 检查两个操作数的值是否相等，如果值不相等，则条件变为真。
+True
+
+三 逻辑运算符： not 、and、 or
+>>> a > b and  a < b  # 如果两个操作数都是True，那么结果为True，否则结果为False。
+False
+>>> a > b or  a < b  # 如果有两个操作数至少有一个为True, 那么条件变为True，否则为False。
+True
+>>> not a > b  # 反转操作的状态，操作数为True，则结果为False，反之则为True
+False
+
+短路原则
+条件1 and 条件2 
+对与and  如果条件1位假 自动判断为假  不用去判断条件2
+条件1  or 条件2
+如果条件1 为真  即为真 不用判断条件2  
+
+
+
+
+四 赋值运算符： = 、+= -= *= /= %= //= **=
+>>> num = 2    
+>>> num += 1   # 等价于 num = num + 1
+>>> num -= 1   # 等价于 num = num - 1
+>>> num *= 1   # 等价于 num = num * 1
+>>> num /= 1   # 等价于 num = num / 1
+>>> num //= 1   # 等价于 num = num // 1
+>>> num %= 1   # 等价于 num = num % 1
+>>> num **= 2   # 等价于 num = num ** 2
+
+
+五 身份运算符： is、is not
+>>> a = 123456
+>>> b = a
+>>> b is a   #判断  a 和 b 是不是同一个 123456
+True
+>>> c = 123456
+>>> c is a  #判断  c 和 a 是不是同一个 123456
+False
+>>> c is not a   #判断  c 和 a 是不是不是同一个 123456
+True
+
+
+num = 1
+while num <10:
+    print(num)
+    num +=1
+    if num ==3:
+        break
+        
+#直到猜对退出
+age = 56
+flag = True  #定义为真
+while flag:
+    user_input_age = int(input("Age is:"))
+    if user_input_age == age:
+        print("yes")
+        flag = False   #定义才对了为假 循环退出
+    elif user_input_age > age:
+        print("guess smaller")
+    else:
+        print("guess bigger")
+
