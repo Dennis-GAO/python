@@ -1,0 +1,145 @@
+一 语言定义与分类
+二 执行方式
+三 变量重及变量新赋值
+四 内存释放
+五 编码
+六 注释方式
+七 用户交互
+八 模块
+
+一 语言定义与分类
+
+编程语言：定义好一套与计算机交互的语法规则 这套规则称为一门编程语言
+编译型语言： 全部翻译完在执行  c c++
+解释型语言 边执行边翻译 python  Java javascript
+  编码 encode   解码 decode
+  
+二 执行方式（windows）
+
+交互器模式
+	
+	开始--》cmd --> cd c:\  -->dir   ：打开命令行   切换到c目录下  展示所有文件列表
+	cd = change directory 
+	dir = 查看当前目录文件列表
+	
+	cd .. 返回上一层目录
+	cd ../.. 返回上上一层目录
+	cd ../../.. 返回上上上一层目录
+	cd ../../../.. 返回上上上上一层目录
+文件后缀要根据文件类型注明 .py  这样看到后缀就知道文件是做什么用的
+
+D:\>"d:\Program Files\Python35\python.exe" c:\hello.txt  #通过前面程序的位置 后面文件的位置 可以直接执行
+	Hello World!
+执行py程序方式为:
+		1. 交互器，缺点程序不能永久保存，主要用与简单的语法测试相关
+		2. 文件执行  主要方式
+    
+三 变量重及变量新赋值    
+   
+	变量作用： 为了存储内存中的数据 程序运算过程中的一些中间 结果，为了方便日后调用，起了一个变量名  后面的程序可以通过变量名直接调用变量所对应的内容。
+  变量名：描述性的意思  光看变量名就知道意思 让人更容易阅读
+  name=  把变量看成一个装数据的容器  标记和存储存在内存里的数据
+变量的命名规则：
+变量名首字母：  字母  _
+变量名后面的：  字符   字母  _   数字
+不可以 ：空格 特殊字符不可以用作变量名 
+复杂的变量名字：
+Students_number   #学生数量 多个单词下划线 
+studentsNumber   #驼峰体  其他语言用的较多
+常量： 不变的量 pie=3.141516…..   	Python不区分常量变量 所有的量都是可以变的 
+为了便于区分常量名全部大写    PIE=3.141516    # 常量仍然可以变 书写是为了方便阅读。
+
+变量重新赋值
+name= "alix"
+name2= name  #name2指向了alix的内存空间地址  而不是通过name去软连接name的值
+print(name,name2)
+alix alix
+name= "JAKE"  #name这个变量名指向了JAKE内存空间地址  name2 还是指向之前的alix的内存空间地址
+>>> print(name)
+JAKE
+>>> print(name2)
+alix
+>>>                 #对与同一个内容 alix的内存空间地址 如果重新命名一个变量 ax = alix  ax的内存地址与name2是一致的 一个内容只有一个内存地址 
+                      python不会开发新的内存空间存储相同的内容   当没有变量指向这个内存空间的时候 内存会被回收
+                      
+                      
+四  内存释放 
+
+内存回收
+>>> age = 25  
+>>> print(age)
+25
+>>> del age #直接删除age变量对应的内存数据
+>>> print(age)
+Traceback (most recent call last):
+  File "<pyshell#7>", line 1, in <module>
+    print(age)
+NameError: name 'age' is not defined  #age没有被定义 内存被回收清空了
+>>> age=25
+>>> print(age)
+25
+>>> age= 26 #重新给age赋值  原来的 25 占用的内存空间就会回收了
+>>> print(age)
+26
+
+
+五 编码
+
+ASSIC 码   每个字符 8个bit  一个字节byte
+100多个空余的表格供世界上其他语言使用（不够用）
+初始解决办法：通过预留表格的映射关系  映射到新的扩展表格（）
+支持中文的第一张表 GB2312  72*94  现在支持的是GB18030
+unicode 万国码  支持所有国家和地区的编码 2的16次方 表格 一个字符统一占用2个字节byte  16bit。
+Unicode的扩展集 UTF-8可扩展字符编码集  英文 一个字节存8bit   欧洲2个字节 16bit    中文 3个字节存 24bit
+Python2.**  默认编码ASSIC II 不支持中文
+Python3  默认编码  Unicode  支持中文
+
+2.** 支持中文需要声明
+#!-*- coding:utf-8 -*-            windows默认编码支持GBK
+
+#!-*- coding:utf-8 -*-
+msg=u ”你好”
+print  msg
+print type(msg)
+
+六 注释方式
+单行方便的注释方式 #
+多行方便的注释方式 '''        '''   三个单引号或三个双引号 """           """
+
+
+七 用户交互
+test_age.py
+
+death_age=80
+name=input("your name :") #通过input 与用户的输入交互
+age=input("your age:")
+print(type(age))# 打印 age 数据类型 input输入的所有内容都是字符串类型str 即便是数字也是字符串格式 无法进行计算  
+print(type(death_age)) # 打印 death_age数据类型  int 整数型
+#int 整数型号  int（变量名）
+#str 字符串  str （变量名）
+print("your name:",name)
+print("your age:",age)
+#str(death_age - int(age)) 把数字转成str字符串形式输出。int把age转换成整数型才能运算
+print("your still live for",death_age - int(age),"years.....")# 三段独立的数据 所以可以直接输出
+print("your still live for" + str(death_age - int(age)) + "years.....") # +字符串拼接 必须统一数据类型才能输出  str统一成字符串类型输出
+
+
+
+八 模块
+age_of_princal = 56
+guess_age = int (  input (">>: ") ) #int  输入的转换为 整数型    >>:  提示符
+if guess_age == age_of_princal:
+    print ("yes")    #强制缩进
+else:
+    print("no")
+
+
+缩进 IndentationError: expected an indented block  缩进错误
+	                            ^
+	IndentationError: unindent does not match any outer indentation level
+	SyntaxError: invalid syntax 语法错误
+  windows情况下 tab不等于 四个空格键  windows编辑的程序无法再linux运行（程序主要运行在linux）
+	tab != 4个空格 缩进 windows tab键盘 与linux下不同 
+  通过 notepad++工具 设置--首选项-语言-替换为四个空格  把tab替换为4个空格的意思即可
+	缩进级别必须保持一致 
+
