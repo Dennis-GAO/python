@@ -1,0 +1,149 @@
+
+一  continue 应用
+二 while else 结合 break
+三  不换行
+四  循环规律展示
+五 循环 输出#矩形方格
+六 九九乘法口诀
+
+一  continue 应用
+
+# continue 应用
+num = 1
+while num <=10:
+    num +=1 #1符合上面要求  执行这一句 =2  最后10 <=10  执行这一句=11
+    if num == 3:
+        continue #继续的意思 =3 continue后面的代码跳过了 不输出3   这个循环执行就完成了  结束当次循环
+    print(num)
+ #输出 2-11 不输出3
+ 
+ 
+ 二 while else 结合 break
+ 
+ while：
+  .
+  .
+  .
+  .
+ 
+ else： 表示当while 正常结束了，执行else     break 中断循环  不会执行else
+ 
+例：
+num = 1
+while num <=10:
+    num +=1
+    if num == 3:
+        continue
+    print(num)
+else:
+    print("this is else statement")
+#输出 2-11 this is else statement 不输出3
+
+
+num = 1
+while num <=10:
+    num +=1
+    if num == 5:
+        break  #非正常中断
+    print(num)
+else:
+    print("this is else statement")
+
+# 输出2 3 4 不输出 else后面是语句
+
+
+ 
+三  不换行
+
+print("hello world.",end="") # end=""    
+print("hello world.",end="")
+print("hello world.",end="")  # 输出的3个 hello wrld 在一行  不换行
+#输出 hello world. hello world. hello world.
+print("hello world.",end="_") 
+print("hello world.",end="_")
+print("hello world.",end="_") 
+#输出 hello world._hello world._hello world._
+
+四  循环规律展示
+num1 = 0
+while num1<=5:
+    print(num1,end="_")
+    num2 = 0
+    while num2<=7:
+        print(num2,end="-")
+        num2+=1
+    num1+=1
+    print() # ()空的内容等价于 print(end="\n") 换行
+
+输出内容是这个  
+0_0-1-2-3-4-5-6-7-  先走一个外循环    再走内循环  把内循环走完
+1_0-1-2-3-4-5-6-7-  再走第二个外循环  再走内循环  把内循环走完
+2_0-1-2-3-4-5-6-7-
+3_0-1-2-3-4-5-6-7-
+4_0-1-2-3-4-5-6-7-
+5_0-1-2-3-4-5-6-7-
+
+五 循环 输出#矩形方格
+
+height = int(input("Height:"))  # 用户输入一个高度
+width = int(input("width:"))   # 用户输入一个宽度
+num_height = 1 #设置初始值高度
+while num_height <=height:
+    num_width=1#设置初始值宽度  高度用于换行 不输出内容  宽度输出内容
+    while num_width<=width:
+        print("#",end="")  #宽度是几 就是几个内循环 就打印几个#
+        num_width +=1
+    print() #负责外循环  什么都不输出  () 换行  内循环再去循环
+    num_height +=1 
+    
+输出
+Height:5
+width:4
+####
+####
+####
+####
+####
+>>>
+
+
+line=5
+while line>0:
+    print(line)
+    line -=1
+ >>>   
+    5
+    4    
+    3
+    2
+    1
+
+line=5  #赋值
+while line>0: #line=5 
+    tmp=line #tmp=5 判断
+    while tmp>0:  #tmp=5
+        print("*",end="") #执行一个*    4 执行第二个*  3 执行第四个*
+        tmp -=1  #tmp =4  在返回 判断语句判断   tmp=3
+    print()
+    line -=1  # 外循环变成4
+    
+    *****
+    ****
+    ***
+    **
+    *
+    
+六 九九乘法口诀     
+
+first = 1 #外循环通过 赋值first=1  first +=1   1增加到9
+while first<=9: # 9*9乘法表 限制到9
+    sec = 1     #内循环 通过1-9  1 循环1次  9 循环9次
+    while sec <= first:
+        print(  str(sec)+"*"+ str(first) +"="+str(sec * first), end="\t") #\t  制表符 \n 换行 如果sec=5 那就执行五次  因为有制表符 所以把1-5 *first放到一行
+        sec += 1       
+    print()    
+    first += 1
+
+
+
+
