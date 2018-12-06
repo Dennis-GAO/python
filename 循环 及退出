@@ -1,0 +1,145 @@
+格式化输出  默认用户输入的都是字符串类型
+
+字符格式化输出
+ 占位符 %s  s = string
+       %d  d = digit 整数
+       %f  f = float 浮点数，约等于小数
+       
+       第一版： 没有数据类型区分 也就是说 顾客吧工资输入成字母 也会正确输出
+name = input("Name:")
+age = int(input("Age:"))
+job = input("Job:")
+salary = input("Salary:")
+msg = '''
+--------- info of %s --------
+Name: %s
+Age : %s
+Job : %s
+Salary: %s
+You will be retired in %s years
+-------- end ----------
+''' % (name,name ,age ,job ,salary, 65-age )
+
+第二版： 占位符增加数据类型  同时判断工资是否是数字 把工资转换成数字格式
+name = input("Name:")
+age = int(input("Age:"))
+job = input("Job:")
+salary = input("Salary:")
+if salary.isdigit(): #长的像不像数字,比如200d , '200'
+    salary = int(salary)
+else:
+     print()
+     exit("must input digit") #退出程序
+
+msg = '''
+--------- info of %s --------
+Name: %s
+Age : %s
+Job : %s
+Salary: %s
+You will be retired in %s years
+-------- end ----------
+''' % (name,name ,age ,job ,salary, 65-age )
+
+print(msg)
+
+
+第三版   删掉中间的判断 转化用户输出的数据类型 通过定义占位符的数据类型控制用户的错误输出
+name = input("Name:")
+age = int(input("Age:")) #转换为整数型
+job = input("Job:")
+salary = int(input("Salary:"))  #转换为整数型或者也可以是float 浮点数
+
+msg = '''
+--------- info of %s --------
+Name: %s
+Age : %d
+Job : %s
+Salary: %f
+You will be retired in %s years
+-------- end ----------
+''' % (name,name ,age ,job ,salary, 65-age )
+
+print(msg)
+
+#########################################   以上都是通过程序运行错误跳出程序
+
+程序的跳出提醒
+第一版  通过for 循环用户可以输入3次机会   通过if控制如果用户正确输出提示语跳出   每输入错误一次  有提示语
+_user ="alex"
+_passwd = "abc123"
+
+for i in range(3):
+    username = input("Username:")
+    password = input("Password:")
+    if username == _user and password == _passwd :
+         print("Welcome %s login...." % _user)
+         break #跳出，中断
+else:
+    print("Invalid username or password !")
+
+
+第二版  改进第一版   通过设置检测位 检测位为假  用户输入3次机会错误以后 除了else里面的提醒错误  正常完成循环退出 通过判断检测位增加提示语句
+正确没有后面提示语  三次错误有提醒语句  正确了  不会有最后面else提示语
+
+_user ="alex"
+_passwd = "abc123"
+
+passed_authentication = False # 检测位默认是假  不成立
+for i in range(3):
+    username = input("Username:")
+    password = input("Password:")
+    if username == _user and password == _passwd :
+         print("Welcome %s login...." % _user)
+         passed_authentication = True # 如果登录成功  状态为真
+         break ##跳出，中断 如果break后 就不会执行最后面的 else语句 
+    else:
+        print("Invalid username or password !")
+if not passed_authentication: #只有True下条件成立
+    print(" 还是输入啊，都错了")
+    
+第三版 增加一层循环  用户输入三次错误后提醒是不是还要继续玩 用户选择继续 通过置零控制变量 counter  重新进入循环
+
+_user ="alex"
+_passwd = "abc123"
+counter = 0
+while counter <3: #while  当什么的时候
+    username = input("Username:")
+    password = input("Password:")
+    if username == _user and password == _passwd :
+        print("Welcome %s login...." % _user)
+        break #跳出，中断
+    else:
+        print("Invalid username or password !")
+    counter += 1
+    if counter == 3:
+        keep_going_choice = input("还想玩么?[y/n]")
+        if keep_going_choice == "y":
+            counter = 0  # 不需要增加else  因为用户选择n  counter 不会置零  ==3  直接就退出了
+else:
+    print("要不要脸，臭流氓啊，小虎。")  
+    
+关于continue  与 break
+
+     continue 结束本次循环，继续本循环的下一次循环
+    break 跳出整个当前的循环
+    
+
+
+exit_flag = False
+for i in range(10):
+    if i < 5:
+        continue
+    print(i)
+    for j  in range(10):
+        print("layer",j)
+        if j == 6:
+            exit_flag = True
+            break #跳出当前循环   you jump
+    if exit_flag:        
+        break          # I jump
+
+
+
+    
+    
