@@ -1,0 +1,70 @@
+数据类型
+    整数
+    字符串
+    
+    列表，元组
+        查
+            索引(下标) ，都是从0开始
+            切片
+            .count 用于统计某个元素的出现次数 可选参数为在字符串搜索的开始与结束位置
+            [1,1,1,2].count(1)，返回值为3 
+            
+            .index 根据内容找其对应的位置  变量列表名.index[变量名]
+            
+            "haidilao ge" in a
+        增加  a是变量列表名
+            a.append() 追加  列表名.append("需要添加的内容")  默认添加的位置在列表的最后一列
+aList = [123, 'xyz', 'zara', 'abc'];
+aList.append( 2009 );
+print "Updated List : ", aList;
+>>>Updated List :  [123, 'xyz', 'zara', 'abc', 2009] 
+            a.insert(index, "内容")  列表名.insert(需要添加的位置下标，"需要添加的内容")
+aList = [123, 'xyz', 'zara', 'abc']
+aList.insert( 3, 2009)
+print "Final List : ", aList
+>>>Final List : [123, 'xyz', 'zara', 2009, 'abc']
+
+            a.extend 扩展 用于在列表末尾一次性追加另一个序列中的多个值（用新列表扩展原来的列表）。
+             需要添加的列表名.extend(被添加进去的列表名)   默认添加的位置在 需要添加的列表后面依次添加
+aList = [123, 'xyz', 'zara', 'abc', 123];
+bList = [2009, 'manni'];
+aList.extend(bList)
+print "Extended List : ", aList ;
+>>>Extended List :  [123, 'xyz', 'zara', 'abc', 123, 2009, 'manni']
+
+        修改
+            a[index] = "新的值"   列表名[列表元素位置下标]=新元素
+            a[start:end] = [a,b,c]  列表名[列表元素位置下标起始位置：列表元素位置下标结束位置]=[新元素列表]
+
+a = [1, 2, 3]
+a[1:2]=['a','r','d']
+print(a)
+>>>[1, 'a', 'r', 'd', 3]
+        删除
+            remove("内容")  remove("需要删除的内容")
+a = ['a','b','c']
+a.remove('c')
+print(a)
+>>>['a', 'b']
+            pop(index)  pop(需要删除列表内元素的下标位置)
+a = ['a','b','c']
+a.pop(1)
+print(a)
+>>>['a', 'c']
+            del a, del a[index]
+            a.clear() 清空
+
+
+根据内容找位置
+
+a = ['wuchao', 'jinxin', 'xiaohu','ligang', 'sanpang', 'ligang', ['wuchao', 'jinxin']]
+
+ first_lg_index = a.index("ligang") #通过 a.index 找到 first ligang位置下标
+ print("first_lg_index",first_lg_index)  #打印first ligang 位置下标
+ little_list = a[first_lg_index+1:] #从first ligang后面一个 到最后一个数据形成新列表
+ second_lg_index = little_list.index("ligang") # 从小列表中找到 第二个ligang在小列表的位置下标
+ print("second_lg_index",second_lg_index)# 打印小ligang的位置
+ second_lg_index_in_big_list = first_lg_index + second_lg_index +1 #小ligang在大列表的位置
+ print("second_lg_index_in_big_list",second_lg_index_in_big_list)
+ print("second lg:",a[second_lg_index_in_big_list])  #取出小ligang在大列表的位置
+
