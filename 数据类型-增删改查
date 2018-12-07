@@ -2,16 +2,29 @@
     整数
     字符串
     
-    列表，元组
+    列表，a=[]  元组a=() #元素不可修改  又称为只读列表
         查
             索引(下标) ，都是从0开始
             切片
             .count 用于统计某个元素的出现次数 可选参数为在字符串搜索的开始与结束位置
+>>> ['to', 'be', 'or', 'not', 'to', 'be'].count('to') 
+2 
             [1,1,1,2].count(1)，返回值为3 
             
             .index 根据内容找其对应的位置  变量列表名.index[变量名]
             
             "haidilao ge" in a
+1 查（［］）
+names_class2=['张三','李四','王五','赵六']
+ 
+# print(names_class2[2])
+# print(names_class2[0:3])
+# print(names_class2[0:7])
+# print(names_class2[-1])
+# print(names_class2[2:3])
+# print(names_class2[0:3:1])
+# print(names_class2[3:0:-1])
+# print(names_class2[:]) 
         增加  a是变量列表名
             a.append() 追加  列表名.append("需要添加的内容")  默认添加的位置在列表的最后一列
 aList = [123, 'xyz', 'zara', 'abc'];
@@ -46,7 +59,7 @@ a = ['a','b','c']
 a.remove('c')
 print(a)
 >>>['a', 'b']
-            pop(index)  pop(需要删除列表内元素的下标位置)
+            pop(index)  pop(需要删除列表内元素的下标位置)  有返回值 用一个 变量可以看到返回值
 a = ['a','b','c']
 a.pop(1)
 print(a)
@@ -68,3 +81,27 @@ a = ['wuchao', 'jinxin', 'xiaohu','ligang', 'sanpang', 'ligang', ['wuchao', 'jin
  print("second_lg_index_in_big_list",second_lg_index_in_big_list)
  print("second lg:",a[second_lg_index_in_big_list])  #取出小ligang在大列表的位置
 
+
+ reverse
+ reverse 方法将列表中的元素反向存放。
+
+names_class2.reverse()
+print(names_class2)
+
+ sort
+ sort 方法用于在原位置对列表进行排序。
+
+x = [4, 6, 2, 1, 7, 9]
+x.sort()#x.sort(reverse=True)  #按照ascc码排序  默认从小到大  reverse=True从大到小
+
+a=[[1,2,3],'ass',(1,2,3,4)]
+
+print(a[0][1])  :取出a列表中 第0个元素中的第一个元素
+(a[0][2]) =4
+
+
+
+tup1 = ()    # 空元组
+tup2 = (20,) # 一个元素，需要在元素后添加逗号
+
+元祖取值搜索也是用[]  a[2]  通过下标
