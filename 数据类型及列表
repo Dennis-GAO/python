@@ -1,0 +1,35 @@
+数据类型
+    整数
+    字符串
+    列表，元组
+        查
+            索引(下标) ，都是从0开始
+            切片
+            .count 查某个元素的出现次数
+            .index 根据内容找其对应的位置
+            "haidilao ge" in a  
+        增加
+            a.append() 追加
+            a.insert(index, "内容")
+            a.extend 扩展
+
+        修改
+            a[index] = "新的值"
+            a[start:end] = [a,b,c]
+
+        删除
+            remove("内容")
+            pop(index)
+            del a, del a[index]
+            a.clear() 清空
+列表 查
+a = ['wuchao', 'jinxin', 'Xiaohu','Ligang', 'sanpang', 'ligang']
+>>> x = [1,2,3,3,3,4,4] #知道某个元素 查出现的次数
+>>> x.count(3) # 通过狮子查询
+3  
+a.index(2) # 通过下标查询 从零开始  顾头不顾屁股 通过查元素的下标查询     前提具体知道元素在这里的位置
+>>> x = [1,2,3,3,3,4,4]   index 方法用于从列表中找出某个值第一个匹配项的索引位置：　
+>>> x.index(3)
+2
+"haidilao ge" in a  ：判断某个字符串是否在这个列表里  可以查一下  然后返回真假判断   判断元素是否这个列表里
+
