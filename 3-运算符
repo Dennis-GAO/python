@@ -16,11 +16,11 @@ python常用运算符
 + - * /  //(取整除)  %(取余除)  ** 指数计算   */优先级高于 +- 可以通过（）区分优先级  括号可以嵌套
 >>> 5/2
 2.5
->>> 5//2  #地板除 
+>>> 5//2  #地板除  取整除
 2
 >>> 9//2
 4
->>> 5%2 #取商
+>>> 5%2 #取余数
 1
 >>> 9%5
 4
@@ -62,16 +62,16 @@ False
 
 四 赋值运算符： = 、+= -= *= /= %= //= **=
 >>> num = 2    
->>> num += 1   # 等价于 num = num + 1
->>> num -= 1   # 等价于 num = num - 1
->>> num *= 1   # 等价于 num = num * 1
->>> num /= 1   # 等价于 num = num / 1
->>> num //= 1   # 等价于 num = num // 1
->>> num %= 1   # 等价于 num = num % 1
->>> num **= 2   # 等价于 num = num ** 2
+>>> num += 1   # 等价于 num = num + 1   变量自己+1循环
+>>> num -= 1   # 等价于 num = num - 1   变量自己-1循环
+>>> num *= 1   # 等价于 num = num * 1   变量自己*1循环
+>>> num /= 1   # 等价于 num = num / 1   变量自己/1循环
+>>> num //= 1   # 等价于 num = num // 1 变量自己//1整除循环
+>>> num %= 1   # 等价于 num = num % 1    变量自己%1取余循环
+>>> num **= 2   # 等价于 num = num ** 2 变量自己**2二次方指数循环
 
 
-五 身份运算符： is、is not
+五 身份运算符： is、is not   通过 True   Flase 返回结果
 >>> a = 123456
 >>> b = a
 >>> b is a   #判断  a 和 b 是不是同一个 123456
@@ -88,17 +88,17 @@ while num <10:
     print(num)
     num +=1
     if num ==3:
-        break
+        break  #num ==3 的时候直接跳出循环
         
 #直到猜对退出
 age = 56
 flag = True  #定义为真
 while flag:
-    user_input_age = int(input("Age is:"))
-    if user_input_age == age:
+    user_input_age = int(input("Age is:")) #输入年龄
+    if user_input_age == age:  #如果判断正确的
         print("yes")
-        flag = False   #定义才对了为假 循环退出
-    elif user_input_age > age:
+        flag = False   #定义猜对了为假 循环退出
+    elif user_input_age > age:  # 如果没猜对袭击执行下面的这些
         print("guess smaller")
     else:
         print("guess bigger")
