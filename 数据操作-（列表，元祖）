@@ -1,0 +1,125 @@
+数据类型
+    整数
+    字符串
+    
+    列表，a=[]     元组a=() #元祖元素不可修改  又称为只读列表
+    
+        一 查询列表元祖内的数据   每个列表或元祖都有索引(下标) ，都是从0开始
+        
+            1 切片操作： 从元祖中间取出某一个或多个元素   （常用）   列表.([下标开始：下标结束：步长])  *包头不包尾
+names_class2=['张三','李四','王五','赵六']
+ 
+# print(names_class2[2])  #取出下标是2的元素  0 1 2   取出来是'王五'
+# print(names_class2[0:3])#  取出元素  从下标0开始  到下标3  包括0 不包括3  '张三','李四','王五'  *包头不包尾
+# print(names_class2[0:7])
+# print(names_class2[-1])  #取出来的值是'赵六'  列表元祖内的下标从右往左下标顺序是  -1 -2  -3  -4 ....
+# print(names_class2[2:3])
+# print(names_class2[0:3:1])  
+# print(names_class2[3:0:-1]) #从右往左取  步长-1  包括3  不包括0
+# print(names_class2[:])  #取出从开头到结尾
+#print(names_class2[3:0:-2]) 取出来是 ['赵六', '李四']
+             
+       2  .count 用于统计某个元素的出现次数 可选参数为在字符串搜索的开始与结束位置
+>>> ['to', 'be', 'or', 'not', 'to', 'be'].count('to') 
+2 
+ [1,1,1,2].count(1)，返回值为3 
+            
+       3 .index 根据内容找其对应的位置  变量列表名.index[变量名]      根据内容查下标
+names_class2=['张三','李四','王五','赵六']
+print(names_class2.index('李四'))
+>>> 1           
+
+嵌套查询 
+a=[[1,2,3],'ass',(1,2,3,4)]
+print(a[0][1]) #:取出a列表中 第0个列表中的第一个元素
+print(a[0][2]) #=3
+2
+3
+
+        二   增加  a是变量列表名 a.append() 追加  列表名.append("需要添加的内容")  默认添加的位置在列表的最后一列     
+        
+aList = [123, 'xyz', 'zara', 'abc']
+aList.append( 2009 )
+print(aList)
+>>>[123, 'xyz', 'zara', 'abc', 2009]
+
+          按位置添加内容   a.insert(index, "内容")  #列表名.insert(需要添加的位置下标，"需要添加的内容")  按照下标为止添加
+aList = [123, 'xyz', 'zara', 'abc']
+aList.insert( 3, 2009)
+print(aList)
+>>>[123, 'xyz', 'zara', 2009, 'abc']
+
+            a.extend 扩展 用于在列表末尾一次性追加另一个序列中的多个值（用新列表扩展原来的列表）。
+             需要添加的列表名.extend(被添加进去的列表名)   默认添加的位置在 需要添加的列表后面依次添加
+aList = [123, 'xyz', 'zara', 'abc', 123];
+bList = [2009, 'manni'];
+aList.extend(bList)
+print alist
+>>> [123, 'xyz', 'zara', 'abc', 123, 2009, 'manni']
+
+       三  修改  按照下标修改  按照下标的开始结束修改
+            a[index] = "新的值"   列表名[列表元素位置下标]=新元素
+            a[start:end] = [a,b,c]  列表名[列表元素位置下标起始位置：列表元素位置下标结束位置]=[新元素列表]
+
+a = [1, 2, 3]
+a[1:2]=['a','r','d'] #下标1 改成  a r d 
+print(a)
+>>>[1, 'a', 'r', 'd', 3]
+       四  删除  列表.remove(元素) 
+            remove("内容")  remove("需要删除的内容")   ****按照元素删除
+a = ['a','b','c']
+a.remove('c')
+print(a)
+>>>['a', 'b']
+            pop(index)  pop(需要删除列表内元素的下标位置)  有返回值 用一个 变量可以看到返回值  ** 按照下标删除
+a = ['a','b','c']
+a.pop(1)
+print(a)
+>>>['a', 'c']
+            del a,   del a[index]  
+            a.clear() 清空
+ 
+        五 排序
+        list.sort(cmp=None, key=None, reverse=False)   cmp：可选参数 指定后会按照该参数方法排序
+                                                        key：主要是用来进行比较的元素
+                                                        reverse -- 排序规则，reverse = True 降序， reverse = False 升序（默认）
+vowels = ['e', 'a', 'u', 'o', 'i']# 降序
+vowels.sort(reverse=True)# 输出结果
+print(vowels)
+>>>['u', 'o', 'i', 'e', 'a']
+
+ reverse
+ reverse 方法将列表中的元素反向存放。
+
+names_class2.reverse()
+print(names_class2)
+
+sort
+ sort 方法用于在原位置对列表进行排序。
+
+x = [4, 6, 2, 1, 7, 9]
+x.sort()#x.sort(reverse=True)  #按照ascc码排序  默认从小到大  reverse=True从大到小
+print(x)
+>>>[1, 2, 4, 6, 7, 9]
+
+       六 身份判断
+            >>> type(a) is list
+            True
+            >>>
+
+根据内容找位置  查找相同的元素
+
+a = ['wuchao', 'jinxin', 'xiaohu','ligang', 'sanpang', 'ligang', ['wuchao', 'jinxin']]
+
+ first_lg_index = a.index("ligang") #通过 a.index 找到 first ligang位置下标
+ print("first_lg_index",first_lg_index)  #打印first ligang 位置下标
+ little_list = a[first_lg_index+1:] #从first ligang后面一个 到最后一个数据形成新列表
+ second_lg_index = little_list.index("ligang") # 从小列表中找到 第二个ligang在小列表的位置下标
+ print("second_lg_index",second_lg_index)# 打印小ligang的位置
+ second_lg_index_in_big_list = first_lg_index + second_lg_index +1 #小ligang在大列表的位置
+ print("second_lg_index_in_big_list",second_lg_index_in_big_list)
+ print("second lg:",a[second_lg_index_in_big_list])  #取出小ligang在大列表的位置
+
+tup1 = ()    # 空元组
+tup2 = (20,) # 一个元素，需要在元素后添加逗号
+元祖取值搜索也是用[]  a[2]  通过下标
