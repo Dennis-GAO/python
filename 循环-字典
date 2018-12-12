@@ -1,0 +1,32 @@
+实现字典三级菜单进入 返回
+menu=｛
+A:{
+a:{
+}
+b
+c
+d
+}
+B
+C
+D
+
+｝
+
+
+current_layer = menu  实现动态循环
+parent_layers=[]  保存所有父亲级 最后一个元素永远是父亲级
+while True:
+	for key in parent_layers:
+		print(key)
+	choice= input(">>>:").strip()    #strip() 方法用于移除字符串头尾指定的字符(默认为空格或换行符)或字符序列
+	if len(choice)==0:continue  #如果选择的是空 继续选择
+	if choice in corrent_layer: #如果选择的在字典内
+		parent_layers.append(courrent_layer)：在进入下一层之前 把当前层（也就是下一层的父亲层）添加到parent_layers
+#下一次loop 当用户选择b选项时 就可以直接取列表的最后一个值出来
+		corrent_layer= corrent_layer[choice]
+		elif choice = "b:"
+		if parent_layers:		#如果用户选择b 判断 current_layer 等于上一层  如果没有则选择无此项 
+			current_layer = parent_layers.pop() #取列表的最后一个值  他就是当前层的父级   pop() 函数用于移除列表中的一个元素(默认最后一个元素),并且返回该元素的值
+		else:   #
+			print("无此项")	
