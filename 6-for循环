@@ -1,0 +1,80 @@
+for 循环  设置一个常规循环   一般知道循环的次数或者循环的条件  for循环结束 从内存小时  如果循环结束后不需要使用这个变量可以用for循环  还需要这个变量则使用while循环
+
+_user ="alex"  #设置两个变量  用户名 密码
+_passwd = "abc123"
+
+ for i in range(3): #有三次输入机会
+     username = input("Username:")  #通过input让用户输入账户密码
+     password = input("Password:")
+     if username == _user and password == _passwd :  #如果输入正确
+         print("Welcome %s login...." % _user)  #输入正确打印欢迎语
+         break #输入正确 跳出，中断
+     else:
+         print("Invalid username or password !") #输入错误提示密码或用户错误
+ else:
+     print("要不要脸，臭流氓啊，小虎。")  #三次都不正确  输出提示语
+
+
+
+passed_authentication = False  #假，不成立    设置一个提示位
+for i in range(3):
+    username = input("Username:")
+    password = input("Password:")
+    if username == _user and password == _passwd :
+        print("Welcome %s login...." % _user)
+        passed_authentication = True # 用户输入正确的时候 提示位改为真
+        break # 改为真后  循环跳出，中断
+    else:
+        print("Invalid username or password !")  
+if not passed_authentication:#只有在True的情况下，条件成立
+    print("要不要脸，臭流氓啊，小虎。")
+
+
+
+exit_flag = False
+
+for i in range(10):
+    if i <5:
+        continue
+    print(i )
+    for j in range(10):
+        print("layer2",j)
+        if j == 6:
+            exit_flag = True
+            break
+    if exit_flag:
+        break
+        
+5
+layer2 0
+layer2 1
+layer2 2
+layer2 3
+layer2 4
+layer2 5
+layer2 6
+
+continue 结束本次循环，继续下一次循环
+    break 跳出整个当前的循环
+
+while循环    当需要判断是否还需要进入循环体时  用while比较方便
+
+_user ="alex"
+_passwd = "abc123"
+counter = 0
+while counter <3:
+    username = input("Username:")
+    password = input("Password:")
+    if username == _user and password == _passwd :
+        print("Welcome %s login...." % _user)
+        break #跳出，中断
+    else:
+        print("Invalid username or password !")
+    counter += 1
+    if counter == 3:
+        keep_going_choice = input("还想玩么?[y/n]")
+        if keep_going_choice == "y":
+            counter = 0 # 如果用户选择的是y  把控制变量counter归零后 就又进入了while循环体内
+
+else:
+    print("要不要脸，臭流氓啊，小虎。")
