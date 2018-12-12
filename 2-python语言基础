@@ -1,8 +1,8 @@
 一 语言定义与分类
 二 执行方式
-三 变量重及变量新赋值
+三 变量命名及变量重新赋值
 四 内存释放
-五 编码
+五 编程中的编码与解码
 六 注释方式
 七 用户交互
 八 模块
@@ -34,8 +34,8 @@ D:\>"d:\Program Files\Python35\python.exe" c:\hello.txt  #通过前面程序的�
 		1. 交互器，缺点程序不能永久保存，主要用与简单的语法测试相关
 		2. 文件执行  主要方式
     
-三 变量重及变量新赋值    
-   
+三 变量命名及变量重新赋值    
+    变量名 = 内存中存储的数据
 	变量作用： 为了存储内存中的数据 程序运算过程中的一些中间 结果，为了方便日后调用，起了一个变量名  后面的程序可以通过变量名直接调用变量所对应的内容。
   变量名：描述性的意思  光看变量名就知道意思 让人更容易阅读
   name=  把变量看成一个装数据的容器  标记和存储存在内存里的数据
@@ -50,7 +50,7 @@ studentsNumber   #驼峰体  其他语言用的较多
 常量： 不变的量 pie=3.141516…..   	Python不区分常量变量 所有的量都是可以变的 
 为了便于区分常量名全部大写    PIE=3.141516    # 常量仍然可以变 书写是为了方便阅读。
 
-变量重新赋值
+变量重新赋值：给变量重新赋值的内在操作  是吧变量名指向了另外的内存空间的数据  如果原数据仍然有变量指向它  该数据不变。
 name= "alix"
 name2= name  #name2指向了alix的内存空间地址  而不是通过name去软连接name的值
 print(name,name2)
@@ -64,7 +64,7 @@ alix
                       python不会开发新的内存空间存储相同的内容   当没有变量指向这个内存空间的时候 内存会被回收
                       
                       
-四  内存释放 
+四  内存释放  ：python内部是有内存回收机制的  当没有变量指向该内存空间的数据的时候，内存中的数据会清空，也可以通过  del 变量名 清空该内存对应的内容。
 
 内存回收
 >>> age = 25  
@@ -84,7 +84,7 @@ NameError: name 'age' is not defined  #age没有被定义 内存被回收清空�
 26
 
 
-五 编码
+五 编程中的编码与解码
 
 ASSIC 码   每个字符 8个bit  一个字节byte
 100多个空余的表格供世界上其他语言使用（不够用）
@@ -100,15 +100,47 @@ Python3  默认编码  Unicode  支持中文
 
 #!-*- coding:utf-8 -*-
 msg=u ”你好”
-print  msg
+print (msg)
 print type(msg)
+>>>
+
+编码  encode（变成unicode）  decode解码 （转换成当地语言）
+python 2 默认 ASCII
+-*-coding:utf-8 -*-    #需要声明编码
+
+s = "特斯拉"
+s_to_unicode = s.decode("utf-8") #  s_to_unicode 变量解码  解码之前要声明自己的编码   解码后是unicode
+unicode_to__gbk = s_to_unicode.encode("gbk") #编码成gbk  编码encode需要声明编码类型
+print(s_to_unicode)
+print(unicode_gbk)
+
+decode 解码的时候要注明自己的编码类型   默认解码成unicode（万国码）
+encode  编码的时候要注明需要编码成为的类型   
+
+
+gbk_to_unicode = unicode_to__gbk.decode("gbk")  #gbk 转换解码成unicode
+
+unicode_to_utf-8 = gbk_to_unicode.encode("utf-8")  # unicode 编码成utf8
+
+python3  字符编码是unicode   默认文件是utf-8  
+
+s = "特斯拉"         b=byte 字节类型  0-255 之间纯数字的类型
+s_to_gbk =s.encode("gbk")  #因为默认是unicode   不需要解码 直接编码成 gbk
+print(s_to_gbk )
+
+
+python3  encode 编码的同时 会把数据转换成bytes类型
+	 decode 解码的同时会把 bytes类型转换成字符串。
+	b=byte 字节类型  0-255 之间纯数字的类型
+
+
 
 六 注释方式
 单行方便的注释方式 #
 多行方便的注释方式 '''        '''   三个单引号或三个双引号 """           """
 
 
-七 用户交互
+七 用户交互   input()
 test_age.py
 
 death_age=80
