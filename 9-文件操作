@@ -1,0 +1,202 @@
+############################基本流程
+#能调用方法的一定是对象
+# li=[1,2,3]  # li是对象 列表对象
+# li.append('2') #调用方法append
+# 'asc'.capitalize()  #asc也是对象  字符串对象
+#一个文件本身也是一个对象  针对这个对象也有自己的操作
+
+
+                              读模式
+#data=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山','r',encoding='utf-8').read()
+#open(文件的路径，读 模式  编码).读取
+#print(data)
+
+#f=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山','r',encoding='utf-8') #打开
+#data=f.read() #操作
+#print(data)
+#f.close()#关闭
+####  打开  操作  关闭   主要内容在一系列操作
+
+#变量.read(5) #5个字符  一个汉字是一个字符  英文的话 一个字母一个字符
+
+#f=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山','r',encoding='utf-8') #打开
+#data=f.read(5) #操作  取出来是Hell
+#print(data)
+#f.close()
+
+#                          写模式  读模式只能读 写模式只能写
+#f=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山','w',encoding='utf-8') #打开 执行完这一句 文件已经清空了  如果文件不存在就创建文件
+#data=f.write('hello world')
+#print(data)#只有11个字符  之前的内容没有了  写模式是清空完之前的 从头开始写
+#f.close()
+""""""
+#f=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山3','w',encoding='utf-8') #文件的操作句柄
+#f.write('hello world \n')
+#f.write('hahaha')
+#f.close()#  打开文件一定要加上关闭。
+#hello world
+#hahaha
+
+                              #append 追加  所以 a 追加内容
+f=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山','a',encoding='utf-8') #打开
+f.write(' \n hello world') #换行后添加 \n
+#print(data)
+f.close()#关闭 把缓存的内容写进文件里
+#输出的内容  在原内容基础上添加了 hello world
+
+                                    一行一行的拿
+f=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山','r',encoding='utf-8')
+print(f.readline())  # 取出来第一行的内容，光标已经移动到第二行
+print(f.readline())  #所以同样的执行语句 取出来的是第二行  默认文件换行的后面后换行符
+print(f.read(5))
+
+
+f=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山','r',encoding='utf-8')
+print(f.readlines())
+>>>  打印出来的是列表形式的字符串     昨夜寒蛩不住鸣。\n', '惊回千里梦，已三更。\n',
+
+
+
+num = 0
+f=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山','r',encoding='utf-8')
+for i in f.readlines():
+    num +=1
+    if num == 6:
+        print(i.strip(),'hello kitty') #如果不加参数 每行中间会有两行间隔  文件默认有换行符  print 也会换行 加上strip剥离就可以了
+    else:
+        print(i.strip())
+f.close()
+
+num = 0
+f = open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山', 'r', encoding='utf-8') #readlines  直接到到内存里了
+for i in f.readlines():
+    num += 1
+    if num == 6:
+        i=''.join([i.strip(),'dhdhdhdh'])  #字符串拼接用join  不要用+
+    print(i.strip())
+f.close()
+[
+data =f.readlines()
+f.close()
+
+
+num = 0
+f = open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山', 'r', encoding='utf-8') #readlines  直接到到内存里了
+for i in f:
+    num += 1
+    if num == 6:
+        i=''.join([i.strip(),'dhdhdhdh'])  #字符串拼接用join  不要用+
+    print(i.strip())
+f.close()
+
+f = open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山', 'r', encoding='utf-8') #readlines  直接到到内存里了
+print(f.tell())  # 显示光标的位置 现在是0
+print(f.read(2))#  英文的时候走两个字母  默认是从走2个字符   内容是汉字的话 一个汉字是3个字符 2个 默认是走了6个字符
+#f.seek(0) #调光标的位置  执行这一句 把光标移动到开头  下面tell打印的是0 断点续传， 断了开始后 调整光标到断点初  继续传。
+print(f.tell()) # 读取完内容后光标移动到的位置
+把上面的循环改成 for i in data  这样只打开一次拿到了文件内容就关闭了文件  后面的文件就不在文件里进行  和文件没关系了  都在内存里进行了
+对原文件没有进行修改
+
+
+
+
+#f.write()  #内容放在缓存里，内存里  缓存满了移到磁盘
+f = open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山5', 'w', encoding='utf-8') #readlines  直接到到内存里了
+f.write('hello  world \n') #没有到硬盘
+f.write('hey man')
+f.flush()  #把内存内容写入到硬盘   # 可以用来做进度条
+
+
+
+
+import sys,time
+for i in range(30):
+    sys.stdout.write('*')
+    sys.stdout.flush() #如果没有这一句 内容是放到缓存区 并不是0.2s打印一个*  而是30*0.2以后 一起打印出来  有了这一句 0.2秒打印一个*
+    time.sleep(0.2)# 
+
+import time
+for i in range(30):
+    print('*',end='',flush=True)
+    time.sleep(0.1)# 放到缓存区 并不是0.2s打印一个*  而是30*0.2以后 一起打印出来
+    
+    
+    
+    f=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山','a',encoding='utf-8') #
+#f.truncate(5) #truncate截断  w没有意义 先清空在阶段  a是在原有数据基础上截断
+#f.write('hello.world')#从截断的5开始后面添加
+#f.close()
+print(f.isatty())
+#fileno
+# isatty  #是否是终端设备
+#readable
+
+# r+ 读写模式   该怎么读怎么读  写在最后面追加   ***用的比较多
+# w+ 写读模式  先清空写 在读
+# a+追加读
+#f=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山','r+',encoding='utf-8')
+#print(f.readlines()) #列表形式读出来
+#f.write('岳飞') #最后一行追加
+#f.close()
+
+#f=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山','w+',encoding='utf-8') #w+ 文件先清空
+#f.write('岳飞')#写进去岳飞 光标在字的最后面
+#print(f.tell()) #显示有6个字符
+# f.seek(0)  # 光标移动到开始 才从开始开始读取
+#print(f.readlines())  #读出来是空的 因为光标在最后面  是往后读取的
+#f.close()
+
+f=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山','a+',encoding='utf-8')
+print(f.readlines())  #读不出来任何数据 因为a追加的时候是从最后面开始追加 光标在最后面 
+print(f.tell())
+
+
+
+
+#  修改文件中间某一处
+#num = 0
+#f=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山','r+',encoding='utf-8')
+#for lin in f:
+#    num+=1
+#    if num==6:#
+#        #lin=''.join([lin.strip(),'aas'])
+#        f.write('aaaa') #不论光标在哪里  内存的机制决定写的时候光标都是在最后开始的  无法再第6行末尾添加
+#只能新建一个文件 把原文件内容一行一行取到新文件  到了需要添加的位置 通过迭代器去添加  再去替换
+
+文件内容添加
+f_read=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山','r',encoding='utf-8')
+f_write=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山2','w',encoding='utf-8')
+num=0
+for line in f_read:
+    num+=1
+    if num ==5:
+        line='hello yue \n'
+    f_write.write(line)
+f_write.close()
+f_read.close()
+
+
+
+f=open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山','r+',encoding='utf-8')# 两句相等
+f.redlines()
+f.read()
+f.close()
+with open('C:/BaiduNetdiskDownload/day8课堂资料/day8课件资料/小重山','r+',encoding='utf-8') as f:
+    f.redlines()
+    f.read()
+#退出with代码块  自动f.close()
+with open('C:小重山','r',encoding='utf-8' ) as f_read, open('C:小重山2','w',encoding='utf-8' ) as f_write:
+    for line in f_read:
+        f_write.write(line)  #with可以同时管理/创建多个对象  with as
+        
+        
+        a=str({'beijing':{'1':'111','2':'222','3':'333'}})#把字典转换成字符串存在文件里
+print(type(a))
+print(a)#打印出来也是字典的样子 但是是字符串的  无法通过键值对取值 需要再次转换
+a=eval(a)
+print(type(a))
+print(a['beijing']['1'])
+
+
+#1 展示省市县
+#2 对菜单进行增删改查
