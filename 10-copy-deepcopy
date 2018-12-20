@@ -1,0 +1,89 @@
+import copy
+husband = ['xiaohong','123',[5000,15000]]
+wife = husband.copy()
+wife[0] = 'xiaolv'
+wife[1] = '345'
+wife[2][1] -= 5000
+print(husband)
+print(wife)
+print(id(husband[2]))
+print(id(wife[2]))
+print(id(husband[0]))
+print(id(wife[0]))
+#上面为浅copy  又称copy.copy（husband）  只是第一层会copy 列表内的嵌套的列表是共享的   husband修改列表内嵌套列表的内容  wife 也会修改
+xiaosan = copy.deepcopy(husband)
+xiaosan[0] = 'honghong'
+xiaosan[1] = '456'
+xiaosan[2][0] -= 3000
+print(xiaosan)
+print(husband)
+print(wife)
+print(id(xiaosan[2]))
+print(id(xiaosan[0]))
+
+#深层copy  当列表内的嵌套的列表的内容也被copy  当小三修改列表内嵌套列表的内容的时候husband里的内容是不被修改的。
+
+#copy后，wife列表内元素内容修改 husband内容不会被修改，wife列表内嵌套的列表内容修改 hsuband列表嵌套内容一起被修改  因为copy只是第一层的列表  第二层husband与wife是共享的
+#xiaosan=deepcopy（husband） deepcopy后 xiaosan列表内元素内容修改 husband内容不会被修改，xiaosan列表内嵌套的列表内容修改 hsuband也不会被修改  deepcopy可以copy多层列表内容。
+
+
+
+数据类型  set  把不同元素放到一起
+作用有两个  1  去重  2关系测试
+
+a=[6,5,4,3,3,2,1,]
+b=set(a)
+print(b,tpye(b))
+#[12,3,4,5,6] set
+c=list(b) 格式转换
+
+创建 列表  a=[]  a=list[]   创建元祖 a =()  a=tuple()
+
+集合对内容的要求 要求内容可哈
+li=[[1,3,2],4,5,6]
+b=set(a)
+print(b) #  报错 列表内容为可变类型
+
+ 找到set中的元素可以通过循环
+ set本身不可哈希 不可以做字典中的键
+
+添加元素
+a ={1,2,s,4,}
+a.add("ss")  #s作为1个元素添加进去
+print(a)
+
+a ={1,2,'s',4,}
+a.update("zryu")  # zryu 作为4个元素添加进去   如果是ss  则原来的元素不变
+print(a)
+
+
+s.remove
+s.pop
+s.clean
+s.del
+
+判断是否等价
+print(set('abc')==set('abcccb'))
+#True
+
+判断还有> < 
+
+
+交集intersection   通过intersection 或者  & 求交集
+a=set([1,2,3,4,5])
+b=set([4,5,6,7,8,9])
+print(a.intersection(b))
+print(a&b)
+>>> {4, 5}
+并集   通过 untion 或者 |  求并集
+a=set([1,2,3,4,5])
+b=set([4,5,6,7,8,9])
+print(a.union(b))
+print(a|b)
+>>> {1, 2, 3, 4, 5, 6, 7, 8, 9}
+差集  通过difference 或者 -   求差集
+a=set([1,2,3,4,5])
+b=set([4,5,6,7,8,9])
+print(a.difference(b)) # 求在a里但是不在b里的差集
+print(a-b)
+>>> {1, 2, 3}
