@@ -1,0 +1,160 @@
+函数
+
+1减少代码量
+2方便修改
+3保持代码一致性
+数学函数：function
+计算机函数 subroutine（子程序）/procedures(过程)
+                                 参数
+
+
+def print_info(name,age):
+    print('name:%s' %name)
+    print('age:%s' %age)
+
+
+
+
+print_info('abc','14')
+
+name:abc
+age:14
+
+
+默认参数
+
+def print_info(name,age,sex='male'):#sex作为有默认值的参数 放到第一位会报错
+    print('name:%s' %name)
+    print('age:%s' %age)
+    print('sex:%s' %sex)
+
+
+
+
+print_info('abc','14')
+print_info('abc','23','girl')
+name:abc
+age:14
+sex:male
+
+name:abc
+age:23
+sex:girl
+
+不定长参数 不定长参数在默认参数的后面
+
+
+
+
+def add(*args): # 定义一个与元祖 可以传任意数据进去
+    print(args) #当传进去数值 输出
+    sum=0 #定义一个初始值
+    for i in args: #通过循环遍历整个元祖
+        sum +=i   #通过与自身相加 把整个元祖的值相加
+    print(sum)    #打印出这个值
+
+
+
+
+add(1,2,3,4,5)
+
+(1, 2, 3, 4, 5) #输出元祖
+15
+
+
+def add(*args,**kwargs): #**kwargs 定义一个字典 接收字典的信息ad=‘sdsd’
+    print(args)
+    print(kwargs)
+
+
+
+
+
+add(1,2,3,4,5,asc='sdd')  #传数据进去的时候要按照上面的数据  不可以字典后面跟着数字
+
+(1, 2, 3, 4, 5)
+{'asc': 'sdd'}
+
+默认的顺序是
+def add(name,sex=male,*args,**kwargs) #()里面的顺序是固定的  不可以变动  
+
+
+
+
+                                         变量的返回值
+变量结束后 return 写默认返回的是None return后面的内容将不会被执行
+ return 可以定义返回的对象
+
+def f():
+    print('ok')
+    return
+
+f()
+print(f())   / a=f() print(a)
+
+ok #  执f（）返回函数  但是没有函数的返回值
+ok # 执行 print(f())  返回数据  和返回值None
+None
+
+
+
+def f(*args):
+    sum = 0
+    for i in args:
+        sum +=i
+    print(sum)
+
+a = f(1,2,3,4,5)
+print(a)
+
+15
+None #函数的返回值是None
+def f(*args):
+    sum = 0
+    for i in args:
+        sum +=i
+    print(sum)
+    return 'a,b,d,e,r,',5,7
+
+a = f(1,2,3,4,5)
+print(a)
+
+15
+('a,b,d,e,r,', 5, 7) #如果rerurn多个对象  返回一个元祖
+
+
+                                                作用域
+
+函数变量的作用域分三种  int 这种的  python默认自带的叫  built_in  内置 任何层面都生效
+global 全局变量， 全局生效   enclosing  local
+变量的顺序是 LEGB 从内到外
+模块函数可以引入新的作用域
+对与变量  内部声明会覆盖外部变量（因为是从内到外的） 不声明直接使用会直接用外部变量的
+内部使用全局变量需要global 变量名声明  嵌套变量使用上层变量需要用 nonlocal 声明
+
+
+count = 10
+def outer():
+    print(count)
+    count +=1
+
+
+outer()
+
+UnboundLocalError: local variable 'count' referenced before assignment #报错赋值前被引用
+
+
+count = 10
+def outer():
+    global count # 函数体内在使用全局变量的时候需要声明全局变量
+    print(count)
+    count =1 #相当于重新定义了一个变量
+    return 'dmdmddm'
+
+
+print(outer())
+
+print 在执行的时候是从内到外执行的  print执行之前的时候count是没有声明数值的
+所以会报错使用前没有声明  如果把count +=1挪到print前面  则可以正常打印  相当于 在函数体内
+右重新定义了一个变量count  与全局变量没关系 
+如果是count+=1  会保存  因为循环前未定义
